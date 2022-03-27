@@ -1,0 +1,43 @@
+package Test;
+import Thoaikx.Utilisation.*;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
+
+import Page.Page;
+
+import org.testng.annotations.*;
+
+
+import parallelTest.*;
+
+public class TestPageNonLogin extends CrossBrowserScript {
+	private WebDriver driver; 
+	 Page page ; 
+	
+	
+	@BeforeClass
+	public void setUp() {
+		driver = getDriver();
+		
+		 
+	}
+@Test
+
+	public void testParameterWithXML() throws InterruptedException  {	
+			page = new Page(driver)  ;
+		driver.get("https://www.w3schools.com/");
+			page.Login("cuxuanthoai@gmail.com" ,"Thoai@7528");
+			page.LogedIn();
+		}
+		 
+		   // Switching to Alert        
+//        Alert alert = driver.switchTo().alert();		      		
+//        // Capturing alert message.    
+//        String alertMessage= driver.switchTo().alert().getText();
+//        System.out.println(alertMessage);
+	}
+
