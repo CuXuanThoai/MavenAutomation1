@@ -1,0 +1,46 @@
+package Page;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import java.lang.management.ThreadMXBean;
+import java.sql.Driver;
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import Thoaikx.Utilisation.ReUse;
+import net.bytebuddy.implementation.bind.annotation.Super;
+
+public class Page {
+	ReUse reuse ;
+	WebDriver driver ;
+	 JavascriptExecutor js ;
+	public Page(WebDriver driver) {	
+		this.driver= driver ;
+		  reuse  =  new ReUse(driver);
+		this.js = (JavascriptExecutor) driver ;
+			}
+	By ButtonLoginNon = By.xpath("//a[@id='w3loginbtn']");
+	By EmailField = By.xpath("//input[@id='modalusername']");
+	By PassWord = By.xpath("//input[@id='current-password']");
+	By ButtonLogin = By.xpath("//button[@class ='_1VfsI _OD95i _3_H0V']");
+	By BrowserAllTutotials = By.xpath("//button [contains (text() , 'Browse all tutorials' )]");
+	public void Login (String name , String Pass) throws InterruptedException   {	
+		reuse.HighLightElement(ButtonLoginNon);
+		reuse.ClickElement(ButtonLoginNon);	
+		Assert.assertTrue(reuse.VerifyUrl("https://profile.w3schools.com/log-in?redirect_url=https%3A%2F%2Fmy-learning.w3schools.com"),
+				" Khong dung");
+		reuse.SetText(EmailField,name);
+		reuse.SetText(PassWord, Pass);
+		reuse.ClickElement(ButtonLogin);
+	}
+	public void LogedIn () {
+		reuse.ScrollElement(BrowserAllTutotials);
+	}
+	
+	 }
+
